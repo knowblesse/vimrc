@@ -51,6 +51,7 @@ Plug 'preservim/nerdtree'
 "Git
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive'
 
 "Coding
 Plug 'davidhalter/jedi-vim'
@@ -70,13 +71,13 @@ call plug#end()
 """""""""""""""""""""""""""""""""""
 "       Start up Functions        "
 """""""""""""""""""""""""""""""""""
-autocmd VimEnter * call StartUp()
-function! StartUp()
-    if 0 == argc()
-        NERDTree
-    end
-endfunction
-
+"autocmd VimEnter * call StartUp()
+"function! StartUp()
+"    if 0 == argc()
+"        NERDTree
+"    end
+"endfunction
+"
 """""""""""""""""""""""""""""""""""
 "        Plugin Options           "
 """""""""""""""""""""""""""""""""""
@@ -100,8 +101,6 @@ endfunction
 """""""""""""""""""""""""""""""""""
 "             Python              "
 """""""""""""""""""""""""""""""""""
-"set pythonthreehome=~\Anaconda3\
-"set pythonthreedll=~\Anaconda3\python37.dll
 "Python execute selected line script
 autocmd FileType python setlocal completeopt-=preview
 python3 << EOL
