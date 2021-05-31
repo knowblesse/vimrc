@@ -16,20 +16,23 @@ set softtabstop=4
 set colorcolumn=100
 set expandtab
 set hlsearch
-set guifont=Bitstream\ Vera\ Sans\ Mono:h12
-
+if has('unix')
+    echo "Unix option is applied"
+    set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
+else
+    echo "Consier as Window OS"
+    set guifont=Bitstream\ Vera\ Sans\ Mono:h10
+endif
 " Key Bindings
 imap jk <Esc>
 nmap <Tab> >>
 nmap <S-tab> <<
-
 
 " color scheme
 syntax on
 colorscheme monokai
 filetype on
 filetype plugin indent on
-
 
 """""""""""""""""""""""""""""""""""
 "             Plugin              "
