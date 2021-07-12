@@ -43,8 +43,8 @@ filetype plugin indent on
 call plug#begin()
 Plug 'yegappan/taglist'
 Plug 'tpope/vim-sensible'
-Plug 'terryma/vim-multiple-cursors'
-
+"Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 "buffer lists instead of tab
 Plug 'ap/vim-buftabline'
 
