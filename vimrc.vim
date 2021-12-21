@@ -17,11 +17,11 @@ set colorcolumn=100
 set expandtab
 set hlsearch
 if has('unix')
-    echo "Unix option is applied"
+    echo "Unix Mode"
     set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
 else
-    echo "Consier as Window OS"
-    set guifont=Bitstream\ Vera\ Sans\ Mono:h10
+    echo "Window Mode"
+    set guifont=Bitstream\ Vera\ Sans\ Mono:h12
 endif
 " Key Bindings
 imap jk <Esc>
@@ -68,6 +68,9 @@ Plug 'joshdick/onedark.vim'
 "Table generataion
 Plug 'dhruvasagar/vim-table-mode'
 
+"Vertical line generation
+Plug 'Yggdroot/indentLine'
+
 call plug#end()
 
 
@@ -100,6 +103,9 @@ function NERDTreeToggle()
         wincmd p
     endif
 endfunction
+
+" vim-table-mode
+let g:table_mode_corner_corner = '+'
 
 """""""""""""""""""""""""""""""""""
 "             Python              "
