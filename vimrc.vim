@@ -43,7 +43,6 @@ filetype plugin indent on
 call plug#begin()
 Plug 'yegappan/taglist'
 Plug 'tpope/vim-sensible'
-"Plug 'terryma/vim-multiple-cursors'
 Plug 'mg979/vim-visual-multi'
 "buffer lists instead of tab
 Plug 'ap/vim-buftabline'
@@ -112,16 +111,16 @@ let g:table_mode_corner_corner = '+'
 """""""""""""""""""""""""""""""""""
 "Python execute selected line script
 autocmd FileType python setlocal completeopt-=preview
-python3 << EOL
-import vim
-
-def ExecuteSelectedLine(l1, l2):
-    for i in range(l1-1,l2):
-        print(">>" + vim.current.buffer[i])
-        exec(vim.current.buffer[i],globals())
-def ExecuteExpression(exp):
-    print(">>" + exp)
-    exec(exp,globals())
-EOL
-command! -range Ev <line1>,<line2> python3 ExecuteSelectedLine(<line1>, <line2>)
+"python3 << EOL
+"import vim
+"
+"def ExecuteSelectedLine(l1, l2):
+"    for i in range(l1-1,l2):
+"        print(">>" + vim.current.buffer[i])
+"        exec(vim.current.buffer[i],globals())
+"def ExecuteExpression(exp):
+"    print(">>" + exp)
+"    exec(exp,globals())
+"EOL
+"command! -range Ev <line1>,<line2> python3 ExecuteSelectedLine(<line1>, <line2>)
 
