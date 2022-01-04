@@ -5,17 +5,26 @@
 """""""""""""""""""""""""""""""""""
 "             Basics              "
 """""""""""""""""""""""""""""""""""
-" sane text files
+" Sane text files
 set fileformat=unix " uses line ending LF (not DOS-style CR LF)
 set encoding=utf-8
 set fileencoding=utf-8
-set nu
+" View
+set number
+set colorcolumn=100
+set nowrap
+set hlsearch
+set relativenumber
+set scrolloff=8
+set scrolloff=8
+set splitright
+set clipboard=unnamedplus
+" Tab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set colorcolumn=100
 set expandtab
-set hlsearch
+" Font
 if has('unix')
     echo "Unix Mode"
     set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
@@ -23,12 +32,31 @@ else
     echo "Window Mode"
     set guifont=Bitstream\ Vera\ Sans\ Mono:h12
 endif
-" Key Bindings
+"""""""""""""""""""""""""""""""""""
+"          Key Bindings           "
+"""""""""""""""""""""""""""""""""""
 imap jk <Esc>
 nmap <Tab> >>
 nmap <S-tab> <<
+vmap < <gv
+vmap > >gv
+map <leader>t :call NERDTreeToggle()<CR>
 
-" color scheme
+"remove highlighted
+nmap <leader>] : nohlsearch<CR> 
+
+"delete buffer w/o closing the current window
+nmap <leader>q :bp\|bd #<CR>
+
+"faster editting
+if has('unix')
+    nmap <leader>vv :e ~/VCF/vimrc/vimrc.vim <CR>
+else
+    nmap <leader>vv :e C:\VCF\vimrc\vimrc.vim <CR>
+endif
+"""""""""""""""""""""""""""""""""""
+"           Color Scheme          "
+"""""""""""""""""""""""""""""""""""
 syntax on
 colorscheme monokai
 filetype on
@@ -44,6 +72,7 @@ call plug#begin()
 Plug 'yegappan/taglist'
 Plug 'tpope/vim-sensible'
 Plug 'mg979/vim-visual-multi'
+
 "buffer lists instead of tab
 Plug 'ap/vim-buftabline'
 
@@ -70,8 +99,14 @@ Plug 'dhruvasagar/vim-table-mode'
 "Vertical line generation
 Plug 'Yggdroot/indentLine'
 
-call plug#end()
+" For Testing .....................
+"Auto Commplete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Arduino
+Plug 'stevearc/vim-arduino'
 
+
+call plug#end()
 
 """""""""""""""""""""""""""""""""""
 "       Start up Functions        "
@@ -92,7 +127,6 @@ let g:lightline = { 'colorscheme': 'onedark' }
 
 "nerdtree
 let g:nerdtree_open = 0
-map <leader>t :call NERDTreeToggle()<CR>
 function NERDTreeToggle()
     NERDTreeToggle
     if g:nerdtree_open == 1
@@ -100,6 +134,7 @@ function NERDTreeToggle()
     else
         let g:nerdtree_open = 1
         wincmd p
+        NERDTreeFind
     endif
 endfunction
 
