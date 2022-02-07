@@ -18,7 +18,6 @@ set relativenumber
 set scrolloff=8
 set scrolloff=8
 set splitright
-set clipboard=unnamedplus
 " Tab
 set tabstop=4
 set shiftwidth=4
@@ -99,12 +98,10 @@ Plug 'dhruvasagar/vim-table-mode'
 "Vertical line generation
 Plug 'Yggdroot/indentLine'
 
-" For Testing .....................
 "Auto Commplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Arduino
-Plug 'stevearc/vim-arduino'
 
+" For Testing .....................
 
 call plug#end()
 
