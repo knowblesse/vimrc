@@ -84,7 +84,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 
 "Coding
-Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
