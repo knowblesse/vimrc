@@ -31,6 +31,10 @@ else
     echo "Window Mode"
     set guifont=Bitstream\ Vera\ Sans\ Mono:h12
 endif
+" Test
+set spell
+set incsearch " Start searching while typing
+
 """""""""""""""""""""""""""""""""""
 "          Key Bindings           "
 """""""""""""""""""""""""""""""""""
@@ -50,9 +54,15 @@ nmap <leader>q :bp\|bd #<CR>
 "faster editting
 if has('unix')
     nmap <leader>vv :e ~/VCF/vimrc/vimrc.vim <CR>
+    nmap <leader>vvv :e! ~/VCF/vimrc/vimrc.vim <CR>
 else
     nmap <leader>vv :e C:\VCF\vimrc\vimrc.vim <CR>
+    nmap <leader>vvv :e! C:\VCF\vimrc\vimrc.vim <CR>
 endif
+
+"tab complete
+imap <silent><expr> <tab> pumvisible() ? "\<C-n>" : coc#refresh()
+imap <silent><expr> <S-tab> pumvisible() ? "\<C-p>" : coc#refresh()
 """""""""""""""""""""""""""""""""""
 "           Color Scheme          "
 """""""""""""""""""""""""""""""""""
@@ -84,7 +94,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 
 "Coding
-Plug 'ervandew/supertab'
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
 
