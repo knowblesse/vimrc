@@ -100,20 +100,8 @@ Plug 'Yggdroot/indentLine'
 "Auto Commplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" For Testing .....................
-
 call plug#end()
 
-"""""""""""""""""""""""""""""""""""
-"       Start up Functions        "
-"""""""""""""""""""""""""""""""""""
-"autocmd VimEnter * call StartUp()
-"function! StartUp()
-"    if 0 == argc()
-"        NERDTree
-"    end
-"endfunction
-"
 """""""""""""""""""""""""""""""""""
 "        Plugin Options           "
 """""""""""""""""""""""""""""""""""
@@ -122,7 +110,7 @@ set noshowmode
 let g:lightline = { 'colorscheme': 'onedark' }
 
 "nerdtree
-let g:nerdtree_open = 0
+let g:nerdtree_open = 1
 function NERDTreeToggle()
     NERDTreeToggle
     if g:nerdtree_open == 1
@@ -137,11 +125,11 @@ endfunction
 " vim-table-mode
 let g:table_mode_corner_corner = '+'
 
-"""""""""""""""""""""""""""""""""""
-"             Python              "
-"""""""""""""""""""""""""""""""""""
-"Python execute selected line script
-autocmd FileType python setlocal completeopt-=preview
+""""""""""""""""""""""""""""""""""""
+""             Python              "
+""""""""""""""""""""""""""""""""""""
+""Python execute selected line script
+"autocmd FileType python setlocal completeopt-=preview
 "python3 << EOL
 "import vim
 "

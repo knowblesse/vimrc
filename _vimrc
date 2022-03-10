@@ -14,7 +14,7 @@ function! StartUp()
         if has('unix')
             NERDTree ~/VCF
 	else
-	    C:\VCF
+	    NERDTree C:\VCF
         end
     end
 endfunction
