@@ -61,8 +61,18 @@ else
 endif
 
 "tab complete
-imap <silent><expr> <tab> pumvisible() ? "\<C-n>" : coc#refresh()
-imap <silent><expr> <S-tab> pumvisible() ? "\<C-p>" : coc#refresh()
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col -1] =~ '\s'
+endfunction
+imap <silent><expr> <tab> 
+    \ pumvisible() ? "\<C-n>" : 
+    \ <SID>check_back_space() ? "\<Tab>" : 
+    \ coc#refresh()
+imap <silent><expr> <S-tab> 
+    \ pumvisible() ? "\<C-p>" : 
+    \ <SID>check_back_space() ? "\<Tab>" : 
+    \ coc#refresh()
 """""""""""""""""""""""""""""""""""
 "           Color Scheme          "
 """""""""""""""""""""""""""""""""""
