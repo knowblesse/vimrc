@@ -18,6 +18,7 @@ set relativenumber
 set scrolloff=8
 set scrolloff=8
 set splitright
+set equalalways
 " Tab
 set tabstop=4
 set shiftwidth=4
