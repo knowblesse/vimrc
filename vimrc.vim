@@ -10,8 +10,8 @@ set fileformat=unix " uses line ending LF (not DOS-style CR LF)
 set encoding=utf-8
 set fileencoding=utf-8
 " View
-set number
 set colorcolumn=100
+set number
 set nowrap
 set hlsearch
 set relativenumber
@@ -35,6 +35,44 @@ endif
 " Test
 set spell
 set incsearch " Start searching while typing
+
+"""""""""""""""""""""""""""""""""""
+"             Plugin              "
+"""""""""""""""""""""""""""""""""""
+call plug#begin()
+Plug 'yegappan/taglist'
+Plug 'tpope/vim-sensible'
+Plug 'mg979/vim-visual-multi'
+
+"buffer lists instead of tab
+Plug 'ap/vim-buftabline'
+
+"NERD
+Plug 'preservim/nerdtree'
+
+"Git
+Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive'
+
+"Coding
+Plug 'dense-analysis/ale'
+Plug 'itchyny/lightline.vim'
+
+"Color theme
+Plug 'joshdick/onedark.vim'
+Plug 'patstockwell/vim-monokai-tasty'
+
+"Table generataion
+Plug 'dhruvasagar/vim-table-mode'
+
+"Vertical line generation
+Plug 'Yggdroot/indentLine'
+
+"Auto Commplete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+call plug#end()
 
 """""""""""""""""""""""""""""""""""
 "          Key Bindings           "
@@ -78,49 +116,9 @@ imap <silent><expr> <S-tab>
 "           Color Scheme          "
 """""""""""""""""""""""""""""""""""
 syntax on
-colorscheme monokai
+colorscheme vim-monokai-tasty
 filetype on
 filetype plugin indent on
-
-"""""""""""""""""""""""""""""""""""
-"             Plugin              "
-"""""""""""""""""""""""""""""""""""
-"monokai theme is manually installed
-"ctag is manually installed
-
-call plug#begin()
-Plug 'yegappan/taglist'
-Plug 'tpope/vim-sensible'
-Plug 'mg979/vim-visual-multi'
-
-"buffer lists instead of tab
-Plug 'ap/vim-buftabline'
-
-"NERD
-Plug 'preservim/nerdtree'
-
-"Git
-Plug 'airblade/vim-gitgutter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tpope/vim-fugitive'
-
-"Coding
-Plug 'dense-analysis/ale'
-Plug 'itchyny/lightline.vim'
-
-"Color theme
-Plug 'joshdick/onedark.vim'
-
-"Table generataion
-Plug 'dhruvasagar/vim-table-mode'
-
-"Vertical line generation
-Plug 'Yggdroot/indentLine'
-
-"Auto Commplete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-call plug#end()
 
 """""""""""""""""""""""""""""""""""
 "        Plugin Options           "
