@@ -144,6 +144,9 @@ endfunction
 " vim-table-mode
 let g:table_mode_corner_corner = '+'
 
+" disable coc warning
+let g:coc_disable_startup_warning = 1
+
 """"""""""""""""""""""""""""""""""""
 ""             Python              "
 """"""""""""""""""""""""""""""""""""
