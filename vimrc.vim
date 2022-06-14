@@ -73,6 +73,9 @@ Plug 'Yggdroot/indentLine'
 "Auto Commplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Brackets
+Plug 'tpope/vim-surround'
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""
