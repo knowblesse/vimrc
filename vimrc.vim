@@ -34,7 +34,6 @@ else
     set guifont=Bitstream\ Vera\ Sans\ Mono:h12
 endif
 " Test
-set spell
 set incsearch " Start searching while typing
 
 """""""""""""""""""""""""""""""""""
