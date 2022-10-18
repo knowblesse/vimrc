@@ -15,8 +15,10 @@ set number
 set nowrap
 set hlsearch
 set relativenumber
+set scroll=5
 set scrolloff=8
-set scrolloff=8
+set sidescroll=1 " how many columns to move when only `sidescrooloff` columns left.
+set sidescrolloff=4 " when to move window
 set splitright
 set equalalways
 set foldmethod=indent
@@ -108,13 +110,15 @@ function! s:check_back_space() abort
     return !col || getline('.')[col -1] =~ '\s'
 endfunction
 imap <silent><expr> <tab> 
-    \ pumvisible() ? "\<C-n>" : 
-    \ <SID>check_back_space() ? "\<Tab>" : 
+    \ coc#pum#visible() ? coc#pum#next(1) :
+    \ <SID>check_back_space() ? "\<Tab>" :
     \ coc#refresh()
 imap <silent><expr> <S-tab> 
-    \ pumvisible() ? "\<C-p>" : 
+    \ coc#pum#visible() ? coc#pum#prev(1): 
     \ <SID>check_back_space() ? "\<Tab>" : 
     \ coc#refresh()
+inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+
 """""""""""""""""""""""""""""""""""
 "           Color Scheme          "
 """""""""""""""""""""""""""""""""""
@@ -145,6 +149,7 @@ endfunction
 
 " vim-table-mode
 let g:table_mode_corner_corner = '+'
+let g:table_mode_separator = '|'
 
 " disable coc warning
 let g:coc_disable_startup_warning = 1
@@ -167,3 +172,7 @@ let g:coc_disable_startup_warning = 1
 "EOL
 "command! -range Ev <line1>,<line2> python3 ExecuteSelectedLine(<line1>, <line2>)
 
+""""""""""""""""""""""""""""""""""""
+"             Arduino              "
+""""""""""""""""""""""""""""""""""""
+autocmd FileType arduino setlocal ts=2 sw=2 cindent
