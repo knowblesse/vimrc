@@ -89,6 +89,8 @@ vmap < <gv
 vmap > >gv
 map <leader>t :call NERDTreeToggle()<CR>
 
+command Swd :cd %:p:h
+
 "remove highlighted
 nmap <leader>] : nohlsearch<CR> 
 
