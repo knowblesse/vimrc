@@ -1,6 +1,7 @@
 "Python Package Location"
-"set pythonthreehome=~\anaconda3\
-"set pythonthreedll=~\anaconda3\python38.dll
+let g:condaPath = 'C:\Users\knowb\Anaconda3'
+set pythonthreehome=g:condaPath
+set pythonthreedll=glob(g:condaPath.'\python3?.dll')
 "Load .vimrc
 if has('unix')
     :source ~/VCF/vimrc/vimrc.vim
@@ -17,5 +18,6 @@ function! StartUp()
 	    NERDTree C:\VCF
         end
     end
+    CondaEnv('base')
 endfunction
 "

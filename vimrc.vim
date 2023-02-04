@@ -88,6 +88,8 @@ nmap <S-tab> <<
 vmap < <gv
 vmap > >gv
 map <leader>t :call NERDTreeToggle()<CR>
+map <F2> :vertical sb<CR>
+map <F3> :vertical sbn<CR>
 
 command Swd :cd %:p:h
 
@@ -152,13 +154,37 @@ endfunction
 " vim-table-mode
 let g:table_mode_corner_corner = '+'
 let g:table_mode_separator = '|'
-
-" disable coc warning
 let g:coc_disable_startup_warning = 1
 
 """"""""""""""""""""""""""""""""""""
 ""             Python              "
 """"""""""""""""""""""""""""""""""""
+let g:condaPath = 'C:\Users\knowb\Anaconda3'
+let g:defaultPath = $PATH
+let g:condaAddedPath = g:condaPath . '\condabin;' . $PATH
+
+function CondaEnv(envname)
+    if a:envname != 'base'
+        let envname = '\envs\' . a:envname
+    else
+        let envname = ''
+    endif
+    echo 'Setting Env to ' . a:envname
+
+    let l:addedPath = 
+                \g:condaPath . envname . ';' . 
+                \g:condaPath . envname . '\Library\mingw-w64\bin;' . 
+                \g:condaPath . envname . '\Library\usr\bin;' . 
+                \g:condaPath . envname . '\Library\bin;' . 
+                \g:condaPath . envname . '\Scripts;' . 
+                \g:condaPath . envname . '\bin;' 
+
+    let $PATH = l:addedPath . g:condaAddedPath 
+    let $CONDA_DEFAULT_ENV = a:envname
+endfunction
+
+command! -nargs=1 CondaEnv call CondaEnv(<args>)
+
 ""Python execute selected line script
 "autocmd FileType python setlocal completeopt-=preview
 "python3 << EOL
