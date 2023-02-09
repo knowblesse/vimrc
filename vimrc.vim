@@ -58,7 +58,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 
 "Coding
-Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
 
 "Color theme
