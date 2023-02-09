@@ -90,6 +90,8 @@ vmap > >gv
 map <leader>t :call NERDTreeToggle()<CR>
 map <F2> :vertical sb<CR>
 map <F3> :vertical sbn<CR>
+nmap zl zl10
+nmap zh zh10
 
 command Swd :cd %:p:h
 
@@ -106,6 +108,7 @@ if has('unix')
 else
     nmap <leader>vv :e C:\VCF\vimrc\vimrc.vim <CR>
     nmap <leader>vvv :e! C:\VCF\vimrc\vimrc.vim <CR>
+    nmap <leader>cc :e ~/_vimrc <CR>
 endif
 
 "tab complete
