@@ -91,6 +91,8 @@ map <F2> :vertical sb<CR>
 map <F3> :vertical sbn<CR>
 nmap zl zl10
 nmap zh zh10
+noremap [[ ^
+noremap ]] $
 
 command Swd :cd %:p:h
 
