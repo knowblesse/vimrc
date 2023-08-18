@@ -7,3 +7,4 @@ cp ~/VCF/vimrc/_vimrc ~/.vimrc
 mkdir -p ~/.vim
 mkdir -p ~/.vim/colors
 cp ~/VCF/vimrc/monokai.vim ~/.vim/colors/monokai.vim
+cp ~/VCF/vimrc/.tmux.conf ~/
