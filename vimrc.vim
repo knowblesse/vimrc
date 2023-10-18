@@ -89,10 +89,14 @@ vmap > >gv
 map <leader>t :call NERDTreeToggle()<CR>
 map <F2> :vertical sb<CR>
 map <F3> :vertical sbn<CR>
-nmap zl zl10
-nmap zh zh10
-noremap [[ ^
-noremap ]] $
+nmap zl zl20
+nmap zh zh20
+
+" some how [[ is mapped to other function.
+" use unmap <buffer> to unmap somthing like "n [[ *@m . @ means the mapping is
+" buffer local
+noremap '' ^
+noremap ;; $
 
 command Swd :cd %:p:h
 
@@ -208,3 +212,4 @@ command! -nargs=1 CondaEnv call CondaEnv(<args>)
 "             Arduino              "
 """"""""""""""""""""""""""""""""""""
 autocmd FileType arduino setlocal ts=2 sw=2 cindent
+
