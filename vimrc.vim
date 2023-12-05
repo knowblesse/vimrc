@@ -87,8 +87,14 @@ nmap <S-tab> <<
 vmap < <gv
 vmap > >gv
 map <leader>t :call NERDTreeToggle()<CR>
+" Make Vertical Split window
 map <F2> :vertical sb<CR>
 map <F3> :vertical sbn<CR>
+map <F4> :wincmd =<CR>
+" Change buffer
+map <F7> :bp<CR>
+map <F8> :bn<CR>
+" quick move
 nmap zl zl20
 nmap zh zh20
 
@@ -167,7 +173,6 @@ let g:coc_disable_startup_warning = 1
 """"""""""""""""""""""""""""""""""""
 ""             Python              "
 """"""""""""""""""""""""""""""""""""
-let g:condaPath = 'C:\Users\knowb\Anaconda3'
 let g:defaultPath = $PATH
 let g:condaAddedPath = g:condaPath . '\condabin;' . $PATH
 
