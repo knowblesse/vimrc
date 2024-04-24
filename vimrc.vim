@@ -42,7 +42,7 @@ set incsearch " Start searching while typing
 "             Plugin              "
 """""""""""""""""""""""""""""""""""
 call plug#begin()
-Plug 'yegappan/taglist'
+Plug 'liuchengxu/vista.vim'
 Plug 'tpope/vim-sensible'
 Plug 'mg979/vim-visual-multi'
 
@@ -75,6 +75,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Brackets
 Plug 'tpope/vim-surround'
+
+" Test
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
 
 call plug#end()
 
@@ -170,33 +174,36 @@ let g:table_mode_corner_corner = '+'
 let g:table_mode_separator = '|'
 let g:coc_disable_startup_warning = 1
 
-""""""""""""""""""""""""""""""""""""
+"vista
+let g:vista#renderer#enable_icon = 0
+
+"""""""""""""""""""""""""""""""""""""
 ""             Python              "
 """"""""""""""""""""""""""""""""""""
-let g:defaultPath = $PATH
-let g:condaAddedPath = g:condaPath . '\condabin;' . $PATH
+"let g:defaultPath = $PATH
+"let g:condaAddedPath = g:condaPath . '\condabin;' . $PATH
 
-function CondaEnv(envname)
-    if a:envname != 'base'
-        let envname = '\envs\' . a:envname
-    else
-        let envname = ''
-    endif
-    echo 'Setting Env to ' . a:envname
-
-    let l:addedPath = 
-                \g:condaPath . envname . ';' . 
-                \g:condaPath . envname . '\Library\mingw-w64\bin;' . 
-                \g:condaPath . envname . '\Library\usr\bin;' . 
-                \g:condaPath . envname . '\Library\bin;' . 
-                \g:condaPath . envname . '\Scripts;' . 
-                \g:condaPath . envname . '\bin;' 
-
-    let $PATH = l:addedPath . g:condaAddedPath 
-    let $CONDA_DEFAULT_ENV = a:envname
-endfunction
-
-command! -nargs=1 CondaEnv call CondaEnv(<args>)
+"function CondaEnv(envname)
+"    if a:envname != 'base'
+"        let envname = '\envs\' . a:envname
+"    else
+"        let envname = ''
+"    endif
+"    echo 'Setting Env to ' . a:envname
+"
+"    let l:addedPath = 
+"                \g:condaPath . envname . ';' . 
+"                \g:condaPath . envname . '\Library\mingw-w64\bin;' . 
+"                \g:condaPath . envname . '\Library\usr\bin;' . 
+"                \g:condaPath . envname . '\Library\bin;' . 
+"                \g:condaPath . envname . '\Scripts;' . 
+"                \g:condaPath . envname . '\bin;' 
+"
+"    let $PATH = l:addedPath . g:condaAddedPath 
+"    let $CONDA_DEFAULT_ENV = a:envname
+"endfunction
+"
+"command! -nargs=1 CondaEnv call CondaEnv(<args>)
 
 ""Python execute selected line script
 "autocmd FileType python setlocal completeopt-=preview
