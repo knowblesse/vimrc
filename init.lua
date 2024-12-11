@@ -37,6 +37,39 @@ else
     vim.opt.guifont = "Bitstream Vera Sans Mono:h12"
 end
 
+-- Key bindings
+vim.keymap.set("i", "jk", "<Esc>")
+vim.keymap.set("n", "<Tab>", ">>")
+vim.keymap.set("n", "<S-Tab>", "<<")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+--vim.keymap.set("n", "<leader>t", ":NERDTreeToggle<CR>")
+vim.keymap.set("n", "<leader>t", ":NvimTreeOpen")
+vim.keymap.set("n", "<F2>", ":vertical sb<CR>")
+vim.keymap.set("n", "<F3>", ":vertical sbn<CR>")
+vim.keymap.set("n", "<F4>", ":wincmd =<CR>")
+vim.keymap.set("n", "<F7>", ":bp<CR>")
+vim.keymap.set("n", "<F8>", ":bn<CR>")
+vim.keymap.set("n", "zl", "zl20")
+vim.keymap.set("n", "zh", "zh20")
+vim.keymap.set("n", "''", "^")
+vim.keymap.set("n", ";;", "$")
+vim.api.nvim_create_user_command("Swd", "cd %:p:h", {})
+
+vim.keymap.set("n", "<leader>]", ":nohlsearch<CR>")
+vim.keymap.set("n", "<leader>q", ":bp|bd #<CR>")
+
+-- Edit config faster
+if vim.fn.has("unix") == 1 then
+    --vim.keymap.set("n", "<leader>vv", ":e ~/VCF/vimrc/init.lua <CR>")
+    vim.keymap.set("n", "<leader>vv", ":e ~/.config/nvim/init.lua <CR>")
+    vim.keymap.set("n", "<leader>vvv", ":e! ~/VCF/vimrc/init.lua <CR>")
+else
+    vim.keymap.set("n", "<leader>vv", ":e C:\\VCF\\vimrc\\init.lua <CR>")
+    vim.keymap.set("n", "<leader>vvv", ":e! C:\\VCF\\vimrc\\init.lua <CR>")
+    vim.keymap.set("n", "<leader>cc", ":e ~/_vimrc <CR>")
+end
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -70,10 +103,17 @@ require("lazy").setup({
     -- Buffered list instead of tab
     {"ap/vim-buftabline"},
     -- NERD tree
-    {"preservim/nerdtree"},
+    --{"preservim/nerdtree"},
+    {
+        "nvim-tree/nvim-tree.lua",
+        dependencies = {"nvim-tree/nvim-web-devicons"},
+        config = function()
+            require("nvim-tree").setup({})
+        end,
+    },
     -- Git
     {"airblade/vim-gitgutter"},
-    {"Xuyuanp/nerdtree-git-plugin"},
+    --{"Xuyuanp/nerdtree-git-plugin"},
     {"tpope/vim-fugitive"},
     -- Coding
     {"itchyny/lightline.vim"},
@@ -96,37 +136,6 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
-
--- Key bindings
-vim.keymap.set("i", "jk", "<Esc>")
-vim.keymap.set("n", "<Tab>", ">>")
-vim.keymap.set("n", "<S-Tab>", "<<")
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
-vim.keymap.set("n", "<leader>t", ":NERDTreeToggle<CR>")
-vim.keymap.set("n", "<F2>", ":vertical sb<CR>")
-vim.keymap.set("n", "<F3>", ":vertical sbn<CR>")
-vim.keymap.set("n", "<F4>", ":wincmd =<CR>")
-vim.keymap.set("n", "<F7>", ":bp<CR>")
-vim.keymap.set("n", "<F8>", ":bn<CR>")
-vim.keymap.set("n", "zl", "zl20")
-vim.keymap.set("n", "zh", "zh20")
-vim.keymap.set("n", "''", "^")
-vim.keymap.set("n", ";;", "$")
-vim.api.nvim_create_user_command("Swd", "cd %:p:h", {})
-
-vim.keymap.set("n", "<leader>]", ":nohlsearch<CR>")
-vim.keymap.set("n", "<leader>q", ":bp|bd #<CR>")
-
--- Edit config faster
-if vim.fn.has("unix") == 1 then
-    vim.keymap.set("n", "<leader>vv", ":e ~/VCF/vimrc/init.lua <CR>")
-    vim.keymap.set("n", "<leader>vvv", ":e! ~/VCF/vimrc/init.lua <CR>")
-else
-    vim.keymap.set("n", "<leader>vv", ":e C:\\VCF\\vimrc\\init.lua <CR>")
-    vim.keymap.set("n", "<leader>vvv", ":e! C:\\VCF\\vimrc\\init.lua <CR>")
-    vim.keymap.set("n", "<leader>cc", ":e ~/_vimrc <CR>")
-end
 
 -- Colors and filetype settings
 vim.cmd("syntax on")
