@@ -37,35 +37,65 @@ else
     vim.opt.guifont = "Bitstream Vera Sans Mono:h12"
 end
 
--- Plugin management using packer.nvim
-require("packer").startup(function(use)
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- -- loading lazy.nvim so that mappings are correct.
+-- -- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+-- -- Setup lazy.nvim
+require("lazy").setup({
+  spec = {
     -- Plugin list
-    use "liuchengxu/vista.vim"
-    use "tpope/vim-sensible"
-    use "mg979/vim-visual-multi"
+    {"liuchengxu/vista.vim"},
+    {"tpope/vim-sensible"},
+    {"mg979/vim-visual-multi"},
     -- Buffered list instead of tab
-    use "ap/vim-buftabline"
+    {"ap/vim-buftabline"},
     -- NERD tree
-    use "preservim/nerdtree"
+    {"preservim/nerdtree"},
     -- Git
-    use "airblade/vim-gitgutter"
-    use "Xuyuanp/nerdtree-git-plugin"
-    use "tpope/vim-fugitive"
+    {"airblade/vim-gitgutter"},
+    {"Xuyuanp/nerdtree-git-plugin"},
+    {"tpope/vim-fugitive"},
     -- Coding
-    use "itchyny/lightline.vim"
+    {"itchyny/lightline.vim"},
     -- Theme
-    use 'joshdick/onedark.vim'
-    use "patstockwell/vim-monokai-tasty"
+    {"joshdick/onedark.vim"},
+    {"patstockwell/vim-monokai-tasty"},
     -- Table generation
-    use "dhruvasagar/vim-table-mode"
+    {"dhruvasagar/vim-table-mode"},
     --Vertical Line Generation
-    use "Yggdroot/indentLine"
+    {"Yggdroot/indentLine"},
     -- Brackets
-    use "tpope/vim-surround"
+    {"tpope/vim-surround"},
     -- Test module
-    use "godlygeek/tabular"
-    use "preservim/vim-markdown"
-end)
+    {"godlygeek/tabular"},
+    {"preservim/vim-markdown"},
+  },
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  install = { colorscheme = { "habamax" } },
+  -- automatically check for plugin updates
+  checker = { enabled = true },
+})
 
 -- Key bindings
 vim.keymap.set("i", "jk", "<Esc>")
