@@ -29,13 +29,15 @@ vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 
 -- Font settings
-if vim.fn.has("unix") == 1 then
-    print("Unix Mode")
-    vim.opt.guifont = "Bitstream Vera Sans Mono 12"
-else
-    print("Windows Mode")
-    vim.opt.guifont = "Bitstream Vera Sans Mono:h12"
-end
+--if vim.fn.has("unix") == 1 then
+--    print("Unix Mode")
+--    vim.opt.guifont = "Bitstream Vera Sans Mono 12"
+--else
+--    print("Windows Mode")
+--    vim.opt.guifont = "Bitstream Vera Sans Mono:h12"
+--end
+
+vim.opt.guifont = "Hack Nerd Font"
 
 -- Key bindings
 vim.keymap.set("i", "jk", "<Esc>")
@@ -44,7 +46,7 @@ vim.keymap.set("n", "<S-Tab>", "<<")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 --vim.keymap.set("n", "<leader>t", ":NERDTreeToggle<CR>")
-vim.keymap.set("n", "<leader>t", ":NvimTreeOpen")
+vim.keymap.set("n", "<leader>t", ":NvimTreeOpen<CR>")
 vim.keymap.set("n", "<F2>", ":vertical sb<CR>")
 vim.keymap.set("n", "<F3>", ":vertical sbn<CR>")
 vim.keymap.set("n", "<F4>", ":wincmd =<CR>")
@@ -108,7 +110,10 @@ require("lazy").setup({
         "nvim-tree/nvim-tree.lua",
         dependencies = {"nvim-tree/nvim-web-devicons"},
         config = function()
-            require("nvim-tree").setup({})
+            require("nvim-tree").setup(
+            {
+                filters = {dotfiles = true,}
+            })
         end,
     },
     -- Git
@@ -129,6 +134,10 @@ require("lazy").setup({
     -- Test module
     {"godlygeek/tabular"},
     {"preservim/vim-markdown"},
+    -- LSP
+    {"hrsh7th/nvim-cmp"},
+    {"neovim/nvim-lspconfig"},
+    {"hrsh7th/cmp-nvim-lsp"},
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
